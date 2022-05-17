@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 
 import classes from "./nav.module.scss";
+import { Button } from "reactstrap";
 
 export default function Nav() {
 	return (
@@ -16,7 +17,12 @@ export default function Nav() {
 				<Link href="/about">About</Link>
 				<Link href="/login">Login</Link>
 			</ul>
-			<h1 className={classes.greeting}>Welcome to Ian's Coffee</h1>
+			<section className={classes.info}>
+				<h1 className={classes.greeting}>Welcome to Ian's Coffee</h1>
+				<Button className={classes.btn} outline color="info">
+					Shop Now
+				</Button>
+			</section>
 		</nav>
 	);
 }

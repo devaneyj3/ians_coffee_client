@@ -18,4 +18,11 @@
 	.greeting {
 		color: white;
 	}
+	.info {
+		display: flex;
+		justify-content: space-around;
+		.btn {
+			justify-self: flex-end;
+		}
+	}
 }

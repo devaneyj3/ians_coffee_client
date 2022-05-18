@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Featured from "../../components/featured";
+import PageLayout from "../../components/layout/page_layout";
+
+import { getDrinks } from "../../helper/apiCalls";
 
 import classes from "./menu.module.scss";
 
 export default function Menu() {
-	return <div>Menu</div>;
+	const [drinks, setDrinks] = useState([]);
+	useEffect(() => {
+		const getItems = async () => {
+			const drinks = await getDrinks();
+			setDrinks(drinks.data);
+		};
+		getItems();
+	}, []);
+	return (
+		<PageLayout>
+			<section className="menu">
+				<p>There are {drinks.length} drinks.</p>
+				{drinks.length > 0 && <Featured drinks={drinks} />}
+			</section>
+		</PageLayout>
+	);
 }

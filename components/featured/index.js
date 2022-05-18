@@ -1,6 +1,8 @@
 import React from "react";
 
-import { DRINKS } from "../../public/Dummy_Products";
+import Link from "next/link";
+
+import classes from "./featured.module.scss";
 
 import {
 	CardGroup,
@@ -13,26 +15,29 @@ import {
 	Button,
 } from "reactstrap";
 
-export default function Featured() {
+export default function Featured({ drinks }) {
 	return (
-		<CardGroup>
-			{DRINKS.map((drink) => {
-				return (
-					<Card>
-						<CardImg alt={drink.name} src={drink.image} top width="100%" />
-						<CardBody>
-							<CardTitle tag="h5">{drink.name}</CardTitle>
-							<CardSubtitle className="mb-2 text-muted" tag="h6">
-								{drink.quantity} items left
-							</CardSubtitle>
-
-							<CardText>{drink.description}</CardText>
-							<p>${drink.price}</p>
-							<Button>Add To Cart</Button>
-						</CardBody>
-					</Card>
-				);
-			})}
-		</CardGroup>
+		<>
+			<CardGroup>
+				{drinks.map((drink) => {
+					const { name, price, quantity, description } = drink.attributes;
+					const { url } = drink.attributes.image.data.attributes;
+					return (
+						<Card>
+							<CardImg alt={name} src={url} top width="100%" />
+							<CardBody>
+								<CardTitle tag="h5">{name}</CardTitle>
+								<CardSubtitle className="mb-2 text-muted" tag="h6">
+									{quantity} items left
+								</CardSubtitle>
+								<CardText>{description}</CardText>
+								<p>${price}</p>
+								<Button>More Info</Button>
+							</CardBody>
+						</Card>
+					);
+				})}
+			</CardGroup>
+		</>
 	);
 }

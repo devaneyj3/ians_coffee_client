@@ -19,9 +19,11 @@ export default function Nav() {
 			</ul>
 			<section className={classes.info}>
 				<h1 className={classes.greeting}>Welcome to Ian's Coffee</h1>
-				<Button className={classes.btn} outline color="info">
-					Shop Now
-				</Button>
+				<Link href="/menu">
+					<Button className={classes.btn} outline color="info">
+						Shop Now
+					</Button>
+				</Link>
 			</section>
 		</nav>
 	);

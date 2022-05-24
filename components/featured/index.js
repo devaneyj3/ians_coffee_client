@@ -20,11 +20,11 @@ export default function Featured({ drinks }) {
 		<>
 			<CardGroup>
 				{drinks.map((drink) => {
-					const { name, price, quantity, description } = drink.attributes;
-					const { url } = drink.attributes.image.data.attributes;
+					const { name, price, quantity, description } = drink;
+					// const { image } = drink
 					return (
 						<Card>
-							<CardImg alt={name} src={url} top width="100%" />
+							{/* <CardImg alt={name} src={url} top width="100%" /> */}
 							<CardBody>
 								<CardTitle tag="h5">{name}</CardTitle>
 								<CardSubtitle className="mb-2 text-muted" tag="h6">

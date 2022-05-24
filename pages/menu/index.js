@@ -11,7 +11,7 @@ export default function Menu() {
 	useEffect(() => {
 		const getItems = async () => {
 			const drinks = await getDrinks();
-			setDrinks(drinks.data);
+			setDrinks(drinks);
 		};
 		getItems();
 	}, []);

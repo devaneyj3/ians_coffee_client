@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "reactstrap";
 
 export default function Nav() {
-	const admin = useSelector((state) => state.admin);
+	const admin = useSelector((state) => state.adminReducer);
 
 	const dispatch = useDispatch();
 
@@ -23,9 +23,12 @@ export default function Nav() {
 				<Link href="/">Home</Link>
 				<Link href="/menu">Menu</Link>
 				<Link href="/about">About</Link>
-				<Link href="/admin">Admin</Link>
+				{!admin.isLoggedIn && <Link href="/admin">Admin</Link>}
 				{admin.isLoggedIn && (
-					<button onClick={() => dispatch(adminLogout())}>Logout</button>
+					<>
+						<Link href="/admin/dashboard">Dashboard</Link>
+						<button onClick={() => dispatch(adminLogout())}>Logout</button>
+					</>
 				)}
 			</ul>
 			<section className={classes.info}>

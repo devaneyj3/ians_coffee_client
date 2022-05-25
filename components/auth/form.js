@@ -3,6 +3,8 @@ import { Button } from "reactstrap";
 import { masterLogin } from "../../helper/apiCalls";
 import PageLayout from "../layout/page_layout";
 
+import { useRouter } from "next/router";
+
 import { adminLogin } from "../../helper/redux/slice/loginSlice";
 import { useDispatch } from "react-redux";
 
@@ -14,6 +16,7 @@ export default function Form({ role, setInvalidMsg }) {
 	const [code, setCode] = useState("");
 
 	const dispatch = useDispatch();
+	const router = useRouter();
 
 	const formSubmit = async (e) => {
 		e.preventDefault();
@@ -25,6 +28,7 @@ export default function Form({ role, setInvalidMsg }) {
 			if (user) {
 				dispatch(adminLogin({ username, name: user.name }));
 				setInvalidMsg("");
+				router.push("/admin/dashboard");
 			} else {
 				setInvalidMsg("Invalid Credentials");
 			}

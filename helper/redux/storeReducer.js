@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { Provider } from "react-redux";
+import { combineReducers } from "redux";
 
 import adminReducer from "./slice/loginSlice";
+import drinkReducer from "./slice/drinkSlice";
+
 import { PersistGate } from "redux-persist/integration/react";
 
 import { persistReducer, persistStore } from "redux-persist";
@@ -14,10 +17,15 @@ const persistConfig = {
 	storage,
 };
 
-const _persistedReducer = persistReducer(persistConfig, adminReducer);
+const reducers = combineReducers({
+	adminReducer,
+	drinkReducer,
+});
+
+const _persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
-	reducer: { admin: _persistedReducer },
+	reducer: _persistedReducer,
 });
 
 let persistor = persistStore(store);

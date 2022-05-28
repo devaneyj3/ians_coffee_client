@@ -4,10 +4,12 @@ import { createDrink } from "../src/graphql/mutations";
 import { listDrinks } from "../src/graphql/queries";
 import { listAdmins } from "../src/graphql/queries";
 
-export async function addDrink() {
+export async function addDrink(drinkData) {
 	try {
-		const drinkData = await API.graphql(graphqlOperation(createDrink));
-		const newDrink = drinkData.data.createDrink.items;
+		const drinks = await API.graphql(
+			graphqlOperation(createDrink, { input: drinkData })
+		);
+		const newDrink = drinks.data.createDrink;
 		return newDrink;
 	} catch (err) {
 		console.log("error fetching drinks");

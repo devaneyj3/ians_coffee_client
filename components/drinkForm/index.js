@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 
 import { addDrink } from "../../helper/apiCalls";
+import { storeDrinks } from "../../helper/redux/slice/drinkSlice";
 
-export default function DrinkForm() {
+import { useRouter } from "next/router";
+
+import { useDispatch } from "react-redux";
+
+export default function DrinkForm({ setMessage }) {
 	const [drink, setDrink] = useState({
 		name: "",
 		description: "",
@@ -10,13 +15,22 @@ export default function DrinkForm() {
 		quantity: "",
 		type: "",
 	});
+
+	const router = useRouter();
+
+	const dispatch = useDispatch();
 	const storeDrink = async (e, drink) => {
 		e.preventDefault();
 
-		///add drink to graphql
+		///add drink to appsync
 		const newDrink = await addDrink(drink);
 
-		console.log(newDrink);
+		setMessage(`${newDrink.name} has been added successfully`);
+
+		router.push("/menu");
+
+		// add drink to redux
+		dispatch(storeDrinks(newDrink));
 	};
 
 	const onChange = (e) => {

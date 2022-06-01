@@ -20,8 +20,6 @@ export default function Form({ role, setInvalidMsg }) {
 
 	const formSubmit = async (e) => {
 		e.preventDefault();
-		// console.log("password ", password);
-		// console.log("username ", username);
 		if (role === "admin") {
 			const user = await masterLogin(username, code);
 			// add admin as logged in in the store

@@ -1,8 +1,7 @@
 import { API, graphqlOperation } from "aws-amplify";
-import { createDrink } from "../src/graphql/mutations";
+import { createDrink, deleteDrink } from "../src/graphql/mutations";
 
-import { listDrinks } from "../src/graphql/queries";
-import { listAdmins } from "../src/graphql/queries";
+import { listDrinks, listAdmins } from "../src/graphql/queries";
 
 export async function addDrink(drinkData) {
 	try {
@@ -22,6 +21,17 @@ export async function getDrinks() {
 		return drinks;
 	} catch (err) {
 		console.log("error fetching drinks");
+	}
+}
+export async function deleteCoffee(drinkId) {
+	try {
+		const drinkData = await API.graphql(
+			graphqlOperation(deleteDrink, { input: { id: drinkId } })
+		);
+		const drink = drinkData.data.deleteDrink;
+		return drink;
+	} catch (err) {
+		console.log("error deleting drinks", err);
 	}
 }
 export async function masterLogin(username, code) {

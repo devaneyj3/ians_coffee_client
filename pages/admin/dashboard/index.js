@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DrinkForm from "../../../components/drinkForm";
 import PageLayout from "../../../components/layout/page_layout";
 
@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 export default function Dashboard() {
 	const admin = useSelector((state) => state.adminReducer);
 
+	const [message, setMessage] = useState("");
+
 	const router = useRouter();
 
 	if (admin.isLoggedIn == false) {
@@ -17,7 +19,8 @@ export default function Dashboard() {
 	return (
 		<PageLayout>
 			<Alert color="success">Welcome {admin.username}</Alert>
-			<DrinkForm />
+			{message && <Alert color="success">{message}</Alert>}
+			<DrinkForm setMessage={setMessage} />
 		</PageLayout>
 	);
 }

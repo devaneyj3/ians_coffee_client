@@ -26,7 +26,7 @@ export default function Home() {
 			<section className={classes.featured}>
 				<h3>Featured Products</h3>
 				<section className="products">
-					{/* <Featured drinks={drinks} /> */}
+					<Featured />
 				</section>
 				<Link href="/menu">
 					<Button className={classes.btn} color="primary">

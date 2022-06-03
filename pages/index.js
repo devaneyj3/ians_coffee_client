@@ -18,6 +18,7 @@ export default function Home() {
 	useEffect(() => {
 		const getItems = async () => {
 			const drinks = await getDrinks();
+			console.log("appSync ", drinks);
 			//store in redux
 			dispatch(initialLoad(drinks));
 		};

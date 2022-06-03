@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
 	drinks: [],
 };
@@ -16,10 +15,13 @@ export const drinkSlice = createSlice({
 			const filteredDrinks = state.drinks.filter((drink) => drink.id !== id);
 			state.drinks = filteredDrinks;
 		},
+		initialLoad: (state, action) => {
+			state.drinks = action.payload;
+		},
 	},
 });
 
 // Action creators are generated for each case reducer function
-export const { storeDrinks, deleteDrinks } = drinkSlice.actions;
+export const { storeDrinks, deleteDrinks, initialLoad } = drinkSlice.actions;
 
 export default drinkSlice.reducer;

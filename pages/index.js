@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Featured from "../components/featured";
@@ -10,17 +10,20 @@ import Link from "next/link";
 import { Button } from "reactstrap";
 
 import { getDrinks } from "../helper/apiCalls";
+import { useDispatch } from "react-redux";
+import { initialLoad } from "../helper/redux/slice/drinkSlice";
 
 export default function Home() {
-	const [drinks, setDrinks] = useState([]);
+	const dispatch = useDispatch();
 	useEffect(() => {
 		const getItems = async () => {
 			const drinks = await getDrinks();
-			setDrinks(drinks.data);
+			setDrinks(drinks);
+			//store in redux
+			dispatch(initialLoad(drinks));
 		};
 		getItems();
 	}, []);
-	console.log("drinks", drinks);
 	return (
 		<PageLayout>
 			<section className={classes.featured}>

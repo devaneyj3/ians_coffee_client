@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Featured from "../components/featured";
@@ -18,7 +18,6 @@ export default function Home() {
 	useEffect(() => {
 		const getItems = async () => {
 			const drinks = await getDrinks();
-			setDrinks(drinks);
 			//store in redux
 			dispatch(initialLoad(drinks));
 		};

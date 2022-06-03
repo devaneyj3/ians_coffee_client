@@ -25,6 +25,8 @@ export default function Featured() {
 
 	const { drinks } = useSelector((state) => state.drinkReducer);
 
+	console.log("drink reducer", drinks);
+
 	const deleteInfo = async (drinkId) => {
 		//delete from appSync
 		const { name, id } = await deleteCoffee(drinkId);

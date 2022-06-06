@@ -8,7 +8,6 @@ export const onCreateDrink = /* GraphQL */ `
       type
       name
       description
-      quantity
       price
       image {
         bucket
@@ -37,7 +36,6 @@ export const onUpdateDrink = /* GraphQL */ `
       type
       name
       description
-      quantity
       price
       image {
         bucket
@@ -66,7 +64,6 @@ export const onDeleteDrink = /* GraphQL */ `
       type
       name
       description
-      quantity
       price
       image {
         bucket
@@ -133,7 +130,6 @@ export const onCreateUser = /* GraphQL */ `
           type
           name
           description
-          quantity
           price
           createdAt
           updatedAt
@@ -157,7 +153,6 @@ export const onUpdateUser = /* GraphQL */ `
           type
           name
           description
-          quantity
           price
           createdAt
           updatedAt
@@ -181,7 +176,6 @@ export const onDeleteUser = /* GraphQL */ `
           type
           name
           description
-          quantity
           price
           createdAt
           updatedAt

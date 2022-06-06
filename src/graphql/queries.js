@@ -8,7 +8,6 @@ export const getDrink = /* GraphQL */ `
       type
       name
       description
-      quantity
       price
       image {
         bucket
@@ -42,7 +41,6 @@ export const listDrinks = /* GraphQL */ `
         type
         name
         description
-        quantity
         price
         image {
           bucket
@@ -100,7 +98,6 @@ export const getUser = /* GraphQL */ `
           type
           name
           description
-          quantity
           price
           createdAt
           updatedAt

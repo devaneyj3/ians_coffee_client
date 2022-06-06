@@ -1,7 +1,4 @@
-import React from "react";
-
-import Link from "next/link";
-
+import React, { useState } from "react";
 import classes from "./featured.module.scss";
 
 import {
@@ -10,52 +7,58 @@ import {
 	CardBody,
 	CardTitle,
 	CardText,
-	CardSubtitle,
 	Button,
 } from "reactstrap";
 
 import { MdDeleteForever } from "react-icons/md";
-import { deleteCoffee } from "../../helper/apiCalls";
+import { useSelector } from "react-redux";
 
-import { useDispatch, useSelector } from "react-redux";
-import { deleteDrinks } from "../../helper/redux/slice/drinkSlice";
+import CustomModal from "../CustomModal";
 
 export default function Featured() {
-	const dispatch = useDispatch();
+	const [selectedDrink, setSelectedDrink] = useState("");
+
+	const toggle = () => {
+		setModal(!modal);
+	};
+
+	const [modal, setModal] = useState(false);
+
+	const deleteDrink = (drink) => {
+		setSelectedDrink(drink);
+		setModal(!modal);
+	};
 
 	const { drinks } = useSelector((state) => state.drinkReducer);
 
-	console.log("drink reducer", drinks);
-
-	const deleteInfo = async (drinkId) => {
-		//delete from appSync
-		const { name, id } = await deleteCoffee(drinkId);
-		console.log(name, " is deleted");
-		//delete from redux
-		dispatch(deleteDrinks(id));
-	};
 	return (
-		<div className={classes.featured}>
+		<>
 			<p>There are {drinks.length} drinks.</p>
-			{drinks.map((drink) => {
-				const { id, name, price, quantity, description } = drink;
-				// const { image } = drink
-				return (
-					<Card>
-						{/* <CardImg alt={name} src={url} top width="100%" /> */}
-						<CardBody>
-							<MdDeleteForever onClick={() => deleteInfo(id)} />
-							<CardTitle tag="h5">{name}</CardTitle>
-							<CardSubtitle className="mb-2 text-muted" tag="h6">
-								{quantity} items left
-							</CardSubtitle>
-							<CardText>{description}</CardText>
-							<p>${price}</p>
-							<Button>More Info</Button>
-						</CardBody>
-					</Card>
-				);
-			})}
-		</div>
+			<div className={classes.featured}>
+				{drinks.map((drink) => {
+					const { id, name, price, description } = drink;
+					// const { image } = drink
+					return (
+						<Card className={classes.card}>
+							{/* <CardImg alt={name} src={url} top width="100%" /> */}
+							<CardBody>
+								<MdDeleteForever onClick={() => deleteDrink(drink)} />
+								<CardTitle tag="h5">{name}</CardTitle>
+								<CardText>{description}</CardText>
+								<p>${price}</p>
+								<Button>More Info</Button>
+							</CardBody>
+						</Card>
+					);
+				})}
+			</div>
+			{selectedDrink && (
+				<CustomModal
+					selectedDrink={selectedDrink}
+					modal={modal}
+					toggle={toggle}
+				/>
+			)}
+		</>
 	);
 }

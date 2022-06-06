@@ -3,7 +3,6 @@ type Drink @model {
 	type: String!
 	name: String!
 	description: String!
-	quantity: Int!
 	price: Float!
 	image: S3Object
 	orders: [User] @connection

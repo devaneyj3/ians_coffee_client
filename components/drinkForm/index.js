@@ -7,12 +7,14 @@ import { useRouter } from "next/router";
 
 import { useDispatch } from "react-redux";
 
+import classes from "./drinkForm.module.scss";
+import { Button } from "reactstrap";
+
 export default function DrinkForm({ setMessage }) {
 	const [drink, setDrink] = useState({
 		name: "",
 		description: "",
 		price: "",
-		quantity: "",
 		type: "",
 	});
 
@@ -27,8 +29,6 @@ export default function DrinkForm({ setMessage }) {
 
 		setMessage(`${newDrink.name} has been added successfully`);
 
-		router.push("/menu");
-
 		// add drink to redux
 		dispatch(storeDrinks(newDrink));
 	};
@@ -39,50 +39,39 @@ export default function DrinkForm({ setMessage }) {
 	};
 	return (
 		<div>
-			<form>
-				<label htmlFor="name">Name</label>
+			<form className={classes.form_container}>
 				<input
 					type="text"
 					name="name"
+					placeholder="Name"
 					value={drink.name}
 					onChange={(e) => onChange(e)}
 				/>
-
-				<label htmlFor="description">Description</label>
 				<input
 					type="text"
 					name="description"
+					placeholder="Description"
 					value={drink.description}
 					onChange={(e) => onChange(e)}
 				/>
-
-				<label htmlFor="quantity">Quantity</label>
-				<input
-					type="number"
-					name="quantity"
-					value={drink.quantity}
-					onChange={(e) => onChange(e)}
-				/>
-
-				<label htmlFor="type">Type</label>
 				<input
 					type="text"
 					name="type"
+					placeholder="Type"
 					value={drink.type}
 					onChange={(e) => onChange(e)}
 				/>
-
-				<label htmlFor="price">Price</label>
 				<input
 					type="number"
+					placeholder="Price"
 					name="price"
 					value={drink.price}
 					onChange={(e) => onChange(e)}
 				/>
 
-				<button type="submit" onClick={(e) => storeDrink(e, drink)}>
+				<Button color="success" onClick={(e) => storeDrink(e, drink)}>
 					Submit
-				</button>
+				</Button>
 			</form>
 		</div>
 	);

@@ -7,7 +7,7 @@ import classes from "./menu.module.scss";
 export default function Menu() {
 	return (
 		<PageLayout>
-			<section className="menu">
+			<section className={classes.menu}>
 				<Featured />
 			</section>
 		</PageLayout>

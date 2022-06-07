@@ -14,7 +14,7 @@ import { Collapse, Button } from "reactstrap";
 export default function Dashboard() {
 	const admin = useSelector((state) => state.adminReducer);
 
-	const { drinks } = useSelector((state) => state.drinkReducer);
+	const drinks = useSelector((state) => state.drinkReducer);
 
 	console.log(drinks, "drinks dashboard.js");
 

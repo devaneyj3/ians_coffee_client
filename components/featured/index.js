@@ -29,7 +29,7 @@ export default function Featured() {
 		setModal(!modal);
 	};
 
-	const { drinks } = useSelector((state) => state.drinkReducer);
+	const drinks = useSelector((state) => state.drinkReducer);
 
 	console.log(drinks, "featured.js");
 

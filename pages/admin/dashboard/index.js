@@ -16,6 +16,8 @@ export default function Dashboard() {
 
 	const { drinks } = useSelector((state) => state.drinkReducer);
 
+	console.log(drinks, "drinks dashboard.js");
+
 	const [collapse, setCollapse] = useState(false);
 
 	const [message, setMessage] = useState("");

@@ -31,6 +31,8 @@ export default function Featured() {
 
 	const { drinks } = useSelector((state) => state.drinkReducer);
 
+	console.log(drinks, "featured.js");
+
 	return (
 		<>
 			{drinks.length > 0 && <p>There are {drinks.length} drinks.</p>}

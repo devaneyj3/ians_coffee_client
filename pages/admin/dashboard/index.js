@@ -16,7 +16,7 @@ export default function Dashboard() {
 
 	const drinks = useSelector((state) => state.drinkReducer);
 
-	console.log(drinks, "drinks dashboard.js");
+	console.log(drinks.drinks, "drinks dashboard.js");
 
 	const [collapse, setCollapse] = useState(false);
 
@@ -36,8 +36,8 @@ export default function Dashboard() {
 	return (
 		<div className={classes.dashboard}>
 			{message && <Alert color="success">{message}</Alert>}
-			{drinks.length > 0 ? (
-				<Inventory drinks={drinks} />
+			{drinks.drinks.length > 0 ? (
+				<Inventory drinks={drinks.drinks} />
 			) : (
 				<p> You have no drinks</p>
 			)}

@@ -10,8 +10,8 @@ export default function CustomModal({ selectedDrink, modal, toggle }) {
 
 	const deleteInfo = async (drinkId) => {
 		//delete from appSync
-		const { name, id } = await deleteCoffee(drinkId);
-		console.log(name, " is deleted");
+		const { id } = await deleteCoffee(drinkId);
+
 		//delete from redux
 		dispatch(deleteDrinks(id));
 
@@ -27,7 +27,7 @@ export default function CustomModal({ selectedDrink, modal, toggle }) {
 				</ModalBody>
 				<ModalFooter>
 					<Button color="primary" onClick={() => deleteInfo(selectedDrink.id)}>
-						Delete Yes
+						Yes
 					</Button>
 					<Button color="secondary" onClick={toggle}>
 						No

@@ -10,7 +10,7 @@ import {
 	Button,
 } from "reactstrap";
 
-import { MdDeleteForever } from "react-icons/md";
+import { AiFillDelete } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
 import CustomModal from "../CustomModal";
@@ -42,7 +42,9 @@ export default function Featured() {
 						<Card className={classes.card}>
 							{/* <CardImg alt={name} src={url} top width="100%" /> */}
 							<CardBody>
-								<MdDeleteForever onClick={() => deleteDrink(drink)} />
+								<section className={classes.icon}>
+									<AiFillDelete onClick={() => deleteDrink(drink)} />
+								</section>
 								<CardTitle tag="h5">{name}</CardTitle>
 								<CardText>{description}</CardText>
 								<p>${price}</p>

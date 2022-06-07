@@ -142,3 +142,7 @@ a:hover {
 	color: black !important;
 	font-size: 30px;
 }
+
+svg {
+	cursor: pointer;
+}

@@ -25,6 +25,12 @@ export default function Dashboard() {
 	if (admin.isLoggedIn == false) {
 		router.push("/");
 	}
+
+	if (message) {
+		setTimeout(() => {
+			setMessage("");
+		}, 2000);
+	}
 	return (
 		<div className={classes.dashboard}>
 			{message && <Alert color="success">{message}</Alert>}

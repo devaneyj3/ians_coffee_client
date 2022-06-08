@@ -30,12 +30,11 @@ export default function Featured() {
 	};
 
 	const drinks = useSelector((state) => state.drinkReducer);
-
 	console.log(drinks.drinks, "featured.js");
 
 	return (
 		<>
-			<p>There are {drinks.length} drinks.</p>
+			<p>There are {drinks.drinks.length} drinks.</p>
 			<div className={classes.featured}>
 				{drinks.drinks.map((drink) => {
 					const { id, name, price, description } = drink;

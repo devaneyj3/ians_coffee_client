@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./featured.module.scss";
 
 import {
@@ -10,25 +10,9 @@ import {
 	Button,
 } from "reactstrap";
 
-import { AiFillDelete } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
-import CustomModal from "../CustomModal";
-
 export default function Featured() {
-	const [selectedDrink, setSelectedDrink] = useState("");
-
-	const toggle = () => {
-		setModal(!modal);
-	};
-
-	const [modal, setModal] = useState(false);
-
-	const deleteDrink = (drink) => {
-		setSelectedDrink(drink);
-		setModal(!modal);
-	};
-
 	const drinks = useSelector((state) => state.drinkReducer);
 	console.log(drinks.drinks, "featured.js");
 
@@ -43,9 +27,7 @@ export default function Featured() {
 						<Card className={classes.card}>
 							{/* <CardImg alt={name} src={url} top width="100%" /> */}
 							<CardBody>
-								<section className={classes.icon}>
-									<AiFillDelete onClick={() => deleteDrink(drink)} />
-								</section>
+								<section className={classes.icon}></section>
 								<CardTitle tag="h5">{name}</CardTitle>
 								<CardText>{description}</CardText>
 								<p>${price}</p>
@@ -55,13 +37,6 @@ export default function Featured() {
 					);
 				})}
 			</div>
-			{selectedDrink && (
-				<CustomModal
-					selectedDrink={selectedDrink}
-					modal={modal}
-					toggle={toggle}
-				/>
-			)}
 		</>
 	);
 }

@@ -106,7 +106,7 @@ export default function Inventory({ drinks }) {
 								) : (
 									<tr>
 										<td>{drink.name}</td>
-										<td>{drink.escription}</td>
+										<td>{drink.description}</td>
 										<td>{drink.type}</td>
 										<td>{drink.price}</td>
 										<td>

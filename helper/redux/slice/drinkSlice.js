@@ -19,8 +19,6 @@ export const drinkSlice = createSlice({
 			const { id } = action.payload;
 			const foundDrink = state.drinks.findIndex((drink) => drink.id === id);
 
-			console.log(foundDrink);
-
 			state.drinks[foundDrink] = action.payload;
 		},
 		initialLoad: (state, action) => {

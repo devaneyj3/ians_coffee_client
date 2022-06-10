@@ -12,8 +12,6 @@ export default function Nav() {
 	const admin = useSelector((state) => state.adminReducer);
 
 	const dispatch = useDispatch();
-
-	console.log(admin);
 	return (
 		<nav className={classes.nav_container}>
 			<video autoPlay muted loop className={classes.video}>
@@ -23,7 +21,8 @@ export default function Nav() {
 				<Link href="/">Home</Link>
 				<Link href="/menu">Menu</Link>
 				<Link href="/about">About</Link>
-				{!admin.isLoggedIn && <Link href="/admin">Admin</Link>}
+				<Link href="/cart">Cart</Link>
+				{!admin.isLoggedIn && <Link href="/auth">Log In / Sign Up</Link>}
 				{admin.isLoggedIn && (
 					<>
 						<Link href="/admin/dashboard">Dashboard</Link>

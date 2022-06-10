@@ -14,6 +14,9 @@ import { useSelector } from "react-redux";
 
 export default function Featured() {
 	const drinks = useSelector((state) => state.drinkReducer);
+
+	const admin = useSelector((state) => state.adminReducer);
+
 	console.log(drinks.drinks, "featured.js");
 
 	return (
@@ -31,7 +34,7 @@ export default function Featured() {
 								<CardTitle tag="h5">{name}</CardTitle>
 								<CardText>{description}</CardText>
 								<p>${price}</p>
-								<Button>More Info</Button>
+								{!admin.isLoggedIn && <Button>Add to Cart</Button>}
 							</CardBody>
 						</Card>
 					);

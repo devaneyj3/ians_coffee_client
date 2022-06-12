@@ -135,12 +135,10 @@ a {
 	text-decoration: none !important;
 	color: white !important;
 	font-weight: bold !important;
-	text-transform: uppercase !important;
 }
 
 a:hover {
 	color: black !important;
-	font-size: 30px;
 }
 
 svg {

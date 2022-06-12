@@ -1,5 +1,6 @@
 import React from "react";
+import PageLayout from "../../components/layout/page_layout";
 
 export default function Auth() {
-	return <div>Auth</div>;
+	return <PageLayout>Auth0 Form</PageLayout>;
 }

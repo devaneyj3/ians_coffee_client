@@ -4,14 +4,15 @@ import Link from "next/link";
 
 import classes from "./nav.module.scss";
 
-import { adminLogout } from "../../../helper/redux/slice/loginSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { Button } from "reactstrap";
+import { useUser } from "@auth0/nextjs-auth0";
+import { useSelector } from "react-redux";
+import AdminRoutes from "./AdminRoutes";
 
 export default function Nav() {
+	const { user } = useUser();
+
 	const admin = useSelector((state) => state.adminReducer);
 
-	const dispatch = useDispatch();
 	return (
 		<nav className={classes.nav_container}>
 			<video autoPlay muted loop className={classes.video}>
@@ -20,23 +21,19 @@ export default function Nav() {
 			<ul className={classes.nav}>
 				<Link href="/">Home</Link>
 				<Link href="/menu">Menu</Link>
-				<Link href="/about">About</Link>
-				<Link href="/cart">Cart</Link>
-				{!admin.isLoggedIn && <Link href="/auth">Log In / Sign Up</Link>}
-				{admin.isLoggedIn && (
+				<AdminRoutes />
+				{user && (
 					<>
-						<Link href="/admin/dashboard">Dashboard</Link>
-						<button onClick={() => dispatch(adminLogout())}>Logout</button>
+						<Link href="/api/auth/logout">Logout</Link>
+						<Link href="/profile">Profile</Link>
 					</>
 				)}
+				{!admin.isLoggedIn && !user ? (
+					<Link href="/api/auth/login">Login</Link>
+				) : null}
 			</ul>
 			<section className={classes.info}>
 				<h1 className={classes.greeting}>Welcome to Ian's Coffee</h1>
-				<Link href="/menu">
-					<Button className={classes.btn} outline color="info">
-						Shop Now
-					</Button>
-				</Link>
 			</section>
 		</nav>
 	);

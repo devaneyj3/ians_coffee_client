@@ -11,11 +11,16 @@ import {
 } from "reactstrap";
 
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 export default function Featured() {
 	const drinks = useSelector((state) => state.drinkReducer);
 
 	const admin = useSelector((state) => state.adminReducer);
+
+	const user = useSelector((state) => state.userReducer);
+
+	console.log("featured products.js", user);
 
 	return (
 		<>
@@ -32,7 +37,13 @@ export default function Featured() {
 								<CardTitle tag="h5">{name}</CardTitle>
 								<CardText>{description}</CardText>
 								<p>${price}</p>
-								{!admin.isLoggedIn && <Button>Add to Cart</Button>}
+								{!admin.isLoggedIn && user.currentCustomer === null ? (
+									<Button>
+										<Link href="/api/auth/login">Add to Cart</Link>
+									</Button>
+								) : (
+									<Button>Add to Cart</Button>
+								)}
 							</CardBody>
 						</Card>
 					);

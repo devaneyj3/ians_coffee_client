@@ -6,6 +6,8 @@ import { storeCustomer } from "../../helper/redux/slice/userSlice";
 
 const Profile = () => {
 	const { user, error, isLoading } = useUser();
+
+	console.log("Auth0 user ", user);
 	const dispatch = useDispatch();
 
 	const checkIfUserExists = async (user) => {

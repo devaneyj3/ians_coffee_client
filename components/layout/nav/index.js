@@ -5,13 +5,20 @@ import Link from "next/link";
 import classes from "./nav.module.scss";
 
 import { useUser } from "@auth0/nextjs-auth0";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AdminRoutes from "./AdminRoutes";
+import { customerNotInSession } from "../../../helper/redux/slice/userSlice";
 
 export default function Nav() {
 	const { user } = useUser();
 
 	const admin = useSelector((state) => state.adminReducer);
+
+	const dispatch = useDispatch();
+
+	if (!user) {
+		dispatch(customerNotInSession());
+	}
 
 	return (
 		<nav className={classes.nav_container}>

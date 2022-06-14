@@ -3,9 +3,10 @@ import {
 	createDrink,
 	deleteDrink,
 	updateDrink,
+	createUser,
 } from "../src/graphql/mutations";
 
-import { listDrinks, listAdmins } from "../src/graphql/queries";
+import { listDrinks, listAdmins, listUsers } from "../src/graphql/queries";
 
 export async function addDrink(drinkData) {
 	try {
@@ -15,7 +16,45 @@ export async function addDrink(drinkData) {
 		const newDrink = drinks.data.createDrink;
 		return newDrink;
 	} catch (err) {
-		console.log("error fetching drinks");
+		console.log("error creating drinks");
+	}
+}
+export async function addUser(userData) {
+	try {
+		const { name, nickname } = userData;
+		const user = await API.graphql(
+			graphqlOperation(createUser, {
+				input: {
+					name: name,
+					username: nickname,
+				},
+			})
+		);
+		const newUser = user.data.createUser;
+		return newUser;
+	} catch (err) {
+		console.log("error creating user", err.errors[0].message);
+	}
+}
+
+export async function addIfNoUserExists(user) {
+	try {
+		const userData = await API.graphql(
+			graphqlOperation(listUsers, {
+				filter: {
+					username: { eq: user.nickname },
+				},
+			})
+		);
+		const person = userData.data.listUsers.items[0];
+		if (person) {
+			return { person, value: -1 };
+		} else {
+			const newData = await addUser(user);
+			return newData;
+		}
+	} catch (err) {
+		console.log(err);
 	}
 }
 export async function editDrinks(drinkData) {

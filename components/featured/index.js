@@ -17,8 +17,6 @@ export default function Featured() {
 
 	const admin = useSelector((state) => state.adminReducer);
 
-	console.log(drinks.drinks, "featured.js");
-
 	return (
 		<>
 			<p>There are {drinks.drinks.length} drinks.</p>

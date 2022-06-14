@@ -26,6 +26,7 @@ export default function Nav() {
 					<>
 						<Link href="/api/auth/logout">Logout</Link>
 						<Link href="/profile">Profile</Link>
+						<Link href="/cart">Cart</Link>
 					</>
 				)}
 				{!admin.isLoggedIn && !user ? (

@@ -12,9 +12,7 @@ export default function AdminRoutes() {
 	const dispatch = useDispatch();
 	return (
 		<div>
-			{!admin.isLoggedIn ? (
-				<Link href="/cart">Cart</Link>
-			) : (
+			{admin.isLoggedIn && (
 				<>
 					<Link href="/admin/dashboard">Dashboard</Link>
 					<Button onClick={() => dispatch(adminLogout())}>Logout</Button>

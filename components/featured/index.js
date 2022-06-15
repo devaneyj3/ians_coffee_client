@@ -21,10 +21,6 @@ export default function Featured() {
 
 	const user = useSelector((state) => state.userReducer);
 
-	const cart = useSelector((state) => state.cartReducer);
-
-	console.log("products in cart ", cart);
-
 	const dispatch = useDispatch();
 
 	const addToCart = async (drink) => {

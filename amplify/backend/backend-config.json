@@ -1,14 +1,16 @@
 {
   "api": {
-    "ianscoffee": {
+    "ianscoffeeclient": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
+      "dependsOn": [],
       "output": {
         "authConfig": {
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2023-06-15T18:08:06.840Z",
               "description": ""
             }
           },

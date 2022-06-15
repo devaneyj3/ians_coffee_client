@@ -1,6 +1,102 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+          userCartId
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        cartUserId
+      }
+      createdAt
+      updatedAt
+      userCartId
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+          userCartId
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        cartUserId
+      }
+      createdAt
+      updatedAt
+      userCartId
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+          userCartId
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        cartUserId
+      }
+      createdAt
+      updatedAt
+      userCartId
+    }
+  }
+`;
 export const createCart = /* GraphQL */ `
   mutation CreateCart(
     $input: CreateCartInput!
@@ -16,22 +112,28 @@ export const createCart = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          cartUserId
         }
         createdAt
         updatedAt
+        userCartId
       }
       Drinks {
         items {
           id
-          cartID
-          drinkID
+          name
+          type
+          description
+          price
           createdAt
           updatedAt
+          cartDrinksId
         }
         nextToken
       }
       createdAt
       updatedAt
+      cartUserId
     }
   }
 `;
@@ -50,22 +152,28 @@ export const updateCart = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          cartUserId
         }
         createdAt
         updatedAt
+        userCartId
       }
       Drinks {
         items {
           id
-          cartID
-          drinkID
+          name
+          type
+          description
+          price
           createdAt
           updatedAt
+          cartDrinksId
         }
         nextToken
       }
       createdAt
       updatedAt
+      cartUserId
     }
   }
 `;
@@ -84,22 +192,28 @@ export const deleteCart = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          cartUserId
         }
         createdAt
         updatedAt
+        userCartId
       }
       Drinks {
         items {
           id
-          cartID
-          drinkID
+          name
+          type
+          description
+          price
           createdAt
           updatedAt
+          cartDrinksId
         }
         nextToken
       }
       createdAt
       updatedAt
+      cartUserId
     }
   }
 `;
@@ -159,18 +273,9 @@ export const createDrink = /* GraphQL */ `
       type
       description
       price
-      carts {
-        items {
-          id
-          cartID
-          drinkID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
+      cartDrinksId
     }
   }
 `;
@@ -185,18 +290,9 @@ export const updateDrink = /* GraphQL */ `
       type
       description
       price
-      carts {
-        items {
-          id
-          cartID
-          drinkID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
+      cartDrinksId
     }
   }
 `;
@@ -211,228 +307,9 @@ export const deleteDrink = /* GraphQL */ `
       type
       description
       price
-      carts {
-        items {
-          id
-          cartID
-          drinkID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
-    }
-  }
-`;
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      username
-      name
-      Cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      username
-      name
-      Cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      username
-      name
-      Cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createCartDrink = /* GraphQL */ `
-  mutation CreateCartDrink(
-    $input: CreateCartDrinkInput!
-    $condition: ModelCartDrinkConditionInput
-  ) {
-    createCartDrink(input: $input, condition: $condition) {
-      id
-      cartID
-      drinkID
-      cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      drink {
-        id
-        name
-        type
-        description
-        price
-        carts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateCartDrink = /* GraphQL */ `
-  mutation UpdateCartDrink(
-    $input: UpdateCartDrinkInput!
-    $condition: ModelCartDrinkConditionInput
-  ) {
-    updateCartDrink(input: $input, condition: $condition) {
-      id
-      cartID
-      drinkID
-      cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      drink {
-        id
-        name
-        type
-        description
-        price
-        carts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteCartDrink = /* GraphQL */ `
-  mutation DeleteCartDrink(
-    $input: DeleteCartDrinkInput!
-    $condition: ModelCartDrinkConditionInput
-  ) {
-    deleteCartDrink(input: $input, condition: $condition) {
-      id
-      cartID
-      drinkID
-      cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      drink {
-        id
-        name
-        type
-        description
-        price
-        carts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
+      cartDrinksId
     }
   }
 `;

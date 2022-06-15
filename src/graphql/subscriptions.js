@@ -1,6 +1,93 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+          userCartId
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        cartUserId
+      }
+      createdAt
+      updatedAt
+      userCartId
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+          userCartId
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        cartUserId
+      }
+      createdAt
+      updatedAt
+      userCartId
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+          userCartId
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        cartUserId
+      }
+      createdAt
+      updatedAt
+      userCartId
+    }
+  }
+`;
 export const onCreateCart = /* GraphQL */ `
   subscription OnCreateCart {
     onCreateCart {
@@ -13,22 +100,28 @@ export const onCreateCart = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          cartUserId
         }
         createdAt
         updatedAt
+        userCartId
       }
       Drinks {
         items {
           id
-          cartID
-          drinkID
+          name
+          type
+          description
+          price
           createdAt
           updatedAt
+          cartDrinksId
         }
         nextToken
       }
       createdAt
       updatedAt
+      cartUserId
     }
   }
 `;
@@ -44,22 +137,28 @@ export const onUpdateCart = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          cartUserId
         }
         createdAt
         updatedAt
+        userCartId
       }
       Drinks {
         items {
           id
-          cartID
-          drinkID
+          name
+          type
+          description
+          price
           createdAt
           updatedAt
+          cartDrinksId
         }
         nextToken
       }
       createdAt
       updatedAt
+      cartUserId
     }
   }
 `;
@@ -75,22 +174,28 @@ export const onDeleteCart = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          cartUserId
         }
         createdAt
         updatedAt
+        userCartId
       }
       Drinks {
         items {
           id
-          cartID
-          drinkID
+          name
+          type
+          description
+          price
           createdAt
           updatedAt
+          cartDrinksId
         }
         nextToken
       }
       createdAt
       updatedAt
+      cartUserId
     }
   }
 `;
@@ -138,18 +243,9 @@ export const onCreateDrink = /* GraphQL */ `
       type
       description
       price
-      carts {
-        items {
-          id
-          cartID
-          drinkID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
+      cartDrinksId
     }
   }
 `;
@@ -161,18 +257,9 @@ export const onUpdateDrink = /* GraphQL */ `
       type
       description
       price
-      carts {
-        items {
-          id
-          cartID
-          drinkID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
+      cartDrinksId
     }
   }
 `;
@@ -184,210 +271,9 @@ export const onDeleteDrink = /* GraphQL */ `
       type
       description
       price
-      carts {
-        items {
-          id
-          cartID
-          drinkID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
-    }
-  }
-`;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
-      id
-      username
-      name
-      Cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
-      id
-      username
-      name
-      Cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
-      id
-      username
-      name
-      Cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateCartDrink = /* GraphQL */ `
-  subscription OnCreateCartDrink {
-    onCreateCartDrink {
-      id
-      cartID
-      drinkID
-      cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      drink {
-        id
-        name
-        type
-        description
-        price
-        carts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateCartDrink = /* GraphQL */ `
-  subscription OnUpdateCartDrink {
-    onUpdateCartDrink {
-      id
-      cartID
-      drinkID
-      cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      drink {
-        id
-        name
-        type
-        description
-        price
-        carts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteCartDrink = /* GraphQL */ `
-  subscription OnDeleteCartDrink {
-    onDeleteCartDrink {
-      id
-      cartID
-      drinkID
-      cart {
-        id
-        User {
-          id
-          username
-          name
-          createdAt
-          updatedAt
-        }
-        Drinks {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      drink {
-        id
-        name
-        type
-        description
-        price
-        carts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
+      cartDrinksId
     }
   }
 `;

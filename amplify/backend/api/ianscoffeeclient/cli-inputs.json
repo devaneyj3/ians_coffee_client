@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "ianscoffeeclient",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/jordandevaney/Desktop/Client-Projects/ians-cofee/ians_coffee_client/amplify/backend/api/ianscoffeeclient/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-06-15T18:08:06.840Z",
+      "keyDescription": ""
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
+  }
+}

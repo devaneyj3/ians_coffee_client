@@ -1,6 +1,6 @@
 {
   "api": {
-    "ianscoffeeclient": {
+    "ianscoffee": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -15,20 +15,6 @@
           "additionalAuthenticationProviders": []
         }
       }
-    }
-  },
-  "auth": {
-    "ianscoffeeclient017cc47d": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
-    }
-  },
-  "storage": {
-    "s3d62d06b4": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation"
     }
   }
 }

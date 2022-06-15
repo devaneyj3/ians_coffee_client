@@ -1,126 +1,54 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getDrink = /* GraphQL */ `
-  query GetDrink($id: ID!) {
-    getDrink(id: $id) {
+export const getCart = /* GraphQL */ `
+  query GetCart($id: ID!) {
+    getCart(id: $id) {
       id
-      type
-      name
-      description
-      price
-      image {
-        bucket
-        region
-        key
-      }
-      orders {
-        items {
-          id
-          name
-          username
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listDrinks = /* GraphQL */ `
-  query ListDrinks(
-    $filter: ModelDrinkFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listDrinks(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
+      User {
         id
-        type
-        name
-        description
-        price
-        image {
-          bucket
-          region
-          key
-        }
-        orders {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getPicture = /* GraphQL */ `
-  query GetPicture($id: ID!) {
-    getPicture(id: $id) {
-      id
-      name
-      owner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listPictures = /* GraphQL */ `
-  query ListPictures(
-    $filter: ModelPictureFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPictures(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        owner
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      name
-      username
-      orders {
-        items {
-          id
-          type
-          name
-          description
-          price
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
         username
-        orders {
+        name
+        Cart {
+          id
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      Drinks {
+        items {
+          id
+          cartID
+          drinkID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCarts = /* GraphQL */ `
+  query ListCarts(
+    $filter: ModelCartFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCarts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+        }
+        Drinks {
           nextToken
         }
         createdAt
@@ -154,6 +82,101 @@ export const listAdmins = /* GraphQL */ `
         name
         username
         code
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getDrink = /* GraphQL */ `
+  query GetDrink($id: ID!) {
+    getDrink(id: $id) {
+      id
+      name
+      type
+      description
+      price
+      carts {
+        items {
+          id
+          cartID
+          drinkID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listDrinks = /* GraphQL */ `
+  query ListDrinks(
+    $filter: ModelDrinkFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDrinks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        type
+        description
+        price
+        carts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        name
+        Cart {
+          id
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }

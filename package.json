@@ -10,7 +10,7 @@
 	},
 	"dependencies": {
 		"@auth0/nextjs-auth0": "^1.9.0",
-		"@aws-amplify/cli": "^8.2.0",
+		"@aws-amplify/cli": "^8.5.0",
 		"@aws-amplify/ui-react": "^2.19.1",
 		"@reduxjs/toolkit": "^1.8.1",
 		"aws-amplify": "^4.3.24",

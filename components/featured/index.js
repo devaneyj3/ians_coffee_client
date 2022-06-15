@@ -10,8 +10,9 @@ import {
 	Button,
 } from "reactstrap";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
+import { addDrinkToCart } from "../../helper/redux/slice/cartSlice";
 
 export default function Featured() {
 	const drinks = useSelector((state) => state.drinkReducer);
@@ -20,15 +21,22 @@ export default function Featured() {
 
 	const user = useSelector((state) => state.userReducer);
 
-	console.log("featured products.js", user);
+	const cart = useSelector((state) => state.cartReducer);
 
+	console.log("products in cart ", cart);
+
+	const dispatch = useDispatch();
+
+	const addToCart = async (drink) => {
+		dispatch(addDrinkToCart(drink));
+	};
 	return (
 		<>
 			<p>There are {drinks.drinks.length} drinks.</p>
 			<div className={classes.featured}>
 				{drinks.drinks.map((drink) => {
 					const { id, name, price, description } = drink;
-					// const { image } = drink
+					const { image } = drink;
 					return (
 						<Card className={classes.card}>
 							{/* <CardImg alt={name} src={url} top width="100%" /> */}
@@ -42,7 +50,7 @@ export default function Featured() {
 										<Link href="/api/auth/login">Add to Cart</Link>
 									</Button>
 								) : (
-									<Button>Add to Cart</Button>
+									<Button onClick={() => addToCart(drink)}>Add to Cart</Button>
 								)}
 							</CardBody>
 						</Card>

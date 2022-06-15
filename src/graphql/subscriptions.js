@@ -1,24 +1,27 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateDrink = /* GraphQL */ `
-  subscription OnCreateDrink {
-    onCreateDrink {
+export const onCreateCart = /* GraphQL */ `
+  subscription OnCreateCart {
+    onCreateCart {
       id
-      type
-      name
-      description
-      price
-      image {
-        bucket
-        region
-        key
+      User {
+        id
+        username
+        name
+        Cart {
+          id
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
       }
-      orders {
+      Drinks {
         items {
           id
-          name
-          username
+          cartID
+          drinkID
           createdAt
           updatedAt
         }
@@ -29,24 +32,27 @@ export const onCreateDrink = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateDrink = /* GraphQL */ `
-  subscription OnUpdateDrink {
-    onUpdateDrink {
+export const onUpdateCart = /* GraphQL */ `
+  subscription OnUpdateCart {
+    onUpdateCart {
       id
-      type
-      name
-      description
-      price
-      image {
-        bucket
-        region
-        key
+      User {
+        id
+        username
+        name
+        Cart {
+          id
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
       }
-      orders {
+      Drinks {
         items {
           id
-          name
-          username
+          cartID
+          drinkID
           createdAt
           updatedAt
         }
@@ -57,126 +63,27 @@ export const onUpdateDrink = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteDrink = /* GraphQL */ `
-  subscription OnDeleteDrink {
-    onDeleteDrink {
+export const onDeleteCart = /* GraphQL */ `
+  subscription OnDeleteCart {
+    onDeleteCart {
       id
-      type
-      name
-      description
-      price
-      image {
-        bucket
-        region
-        key
-      }
-      orders {
-        items {
+      User {
+        id
+        username
+        name
+        Cart {
           id
-          name
-          username
           createdAt
           updatedAt
         }
-        nextToken
+        createdAt
+        updatedAt
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreatePicture = /* GraphQL */ `
-  subscription OnCreatePicture {
-    onCreatePicture {
-      id
-      name
-      owner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdatePicture = /* GraphQL */ `
-  subscription OnUpdatePicture {
-    onUpdatePicture {
-      id
-      name
-      owner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeletePicture = /* GraphQL */ `
-  subscription OnDeletePicture {
-    onDeletePicture {
-      id
-      name
-      owner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
-      id
-      name
-      username
-      orders {
+      Drinks {
         items {
           id
-          type
-          name
-          description
-          price
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
-      id
-      name
-      username
-      orders {
-        items {
-          id
-          type
-          name
-          description
-          price
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
-      id
-      name
-      username
-      orders {
-        items {
-          id
-          type
-          name
-          description
-          price
+          cartID
+          drinkID
           createdAt
           updatedAt
         }
@@ -218,6 +125,267 @@ export const onDeleteAdmin = /* GraphQL */ `
       name
       username
       code
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateDrink = /* GraphQL */ `
+  subscription OnCreateDrink {
+    onCreateDrink {
+      id
+      name
+      type
+      description
+      price
+      carts {
+        items {
+          id
+          cartID
+          drinkID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateDrink = /* GraphQL */ `
+  subscription OnUpdateDrink {
+    onUpdateDrink {
+      id
+      name
+      type
+      description
+      price
+      carts {
+        items {
+          id
+          cartID
+          drinkID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDrink = /* GraphQL */ `
+  subscription OnDeleteDrink {
+    onDeleteDrink {
+      id
+      name
+      type
+      description
+      price
+      carts {
+        items {
+          id
+          cartID
+          drinkID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
+      id
+      username
+      name
+      Cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateCartDrink = /* GraphQL */ `
+  subscription OnCreateCartDrink {
+    onCreateCartDrink {
+      id
+      cartID
+      drinkID
+      cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      drink {
+        id
+        name
+        type
+        description
+        price
+        carts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateCartDrink = /* GraphQL */ `
+  subscription OnUpdateCartDrink {
+    onUpdateCartDrink {
+      id
+      cartID
+      drinkID
+      cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      drink {
+        id
+        name
+        type
+        description
+        price
+        carts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteCartDrink = /* GraphQL */ `
+  subscription OnDeleteCartDrink {
+    onDeleteCartDrink {
+      id
+      cartID
+      drinkID
+      cart {
+        id
+        User {
+          id
+          username
+          name
+          createdAt
+          updatedAt
+        }
+        Drinks {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      drink {
+        id
+        name
+        type
+        description
+        price
+        carts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

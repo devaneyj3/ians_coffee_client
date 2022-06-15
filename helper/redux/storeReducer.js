@@ -6,6 +6,7 @@ import { combineReducers } from "redux";
 import adminReducer from "./slice/loginSlice";
 import drinkReducer from "./slice/drinkSlice";
 import userReducer from "./slice/userSlice";
+import cartReducer from "./slice/cartSlice";
 
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -22,6 +23,7 @@ const reducers = combineReducers({
 	adminReducer,
 	drinkReducer,
 	userReducer,
+	cartReducer,
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

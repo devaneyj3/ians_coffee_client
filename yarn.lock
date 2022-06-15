@@ -81,10 +81,10 @@
   dependencies:
     "@aws-amplify/core" "4.5.6"
 
-"@aws-amplify/cli@^8.2.0":
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/cli/-/cli-8.2.0.tgz#7994284da37b6e9cc9c83adeefaf351b1475c0e3"
-  integrity sha512-QX+i8pUpGoS3eFh3woJZMuvKOkQYTaYHD20Os1QxtDOMgFasCNl91udSaoATI0rTHhM8RKUcfgV4Ony3tYfr+Q==
+"@aws-amplify/cli@^8.5.0":
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/cli/-/cli-8.5.0.tgz#0cf8f156b73055b943a18a807a3fb5d6f0823798"
+  integrity sha512-1oQ0Am06MN4X2KVImSRRkE+hX2ekefZqhZJ01Hj7bC+fk4TCpEWZrTOXwNUOyvRmeqly2Z/IIT7NOZ2uIRXF4g==
   dependencies:
     axios "^0.26.0"
     rimraf "^3.0.2"

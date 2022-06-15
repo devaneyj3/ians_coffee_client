@@ -4,19 +4,37 @@ import {
 	deleteDrink,
 	updateDrink,
 	createUser,
+	createCart,
 } from "../src/graphql/mutations";
 
 import { listDrinks, listAdmins, listUsers } from "../src/graphql/queries";
 
 export async function addDrink(drinkData) {
+	console.log(drinkData);
 	try {
 		const drinks = await API.graphql(
 			graphqlOperation(createDrink, { input: drinkData })
 		);
+		console.log(drinks);
 		const newDrink = drinks.data.createDrink;
 		return newDrink;
 	} catch (err) {
 		console.log("error creating drinks");
+	}
+}
+export async function addCart(drinkData, userID) {
+	try {
+		console.log(drinkData, userID);
+		const cart = await API.graphql(
+			graphqlOperation(createCart, {
+				input: { userID: userID, drinkID: drinkData.id },
+			})
+		);
+		console.log(cart);
+		const newCart = cart.data.createCart;
+		return newCart;
+	} catch (err) {
+		console.log(err.errors[0]);
 	}
 }
 export async function addUser(userData) {

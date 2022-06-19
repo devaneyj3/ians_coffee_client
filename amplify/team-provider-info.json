@@ -10,6 +10,11 @@
       "StackName": "amplify-ianscoffeeclient-dev-140006",
       "StackId": "arn:aws:cloudformation:us-east-1:516584575912:stack/amplify-ianscoffeeclient-dev-140006/fe5ad3f0-ecd4-11ec-a5bd-0a4a75b1a30f",
       "AmplifyAppId": "drvv1gdg0v8iq"
+    },
+    "categories": {
+      "auth": {
+        "ianscoffeecliente349cdce": {}
+      }
     }
   }
 }

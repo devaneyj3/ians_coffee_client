@@ -1,6 +1,9 @@
 import { Auth } from "aws-amplify";
 
-export async function signUp() {
+export async function signUp(person) {
+	let { email, password, username, phone_number } = person;
+	phone_number = `+${phone_number.replace(/-/g, "")}`;
+
 	try {
 		const { user } = await Auth.signUp({
 			username,
@@ -11,16 +14,26 @@ export async function signUp() {
 				// other custom attributes
 			},
 		});
-		console.log(user);
+		return user;
 	} catch (error) {
 		console.log("error signing up:", error);
 	}
 }
 
-export async function signIn() {
+export async function confirmSignUp(username, code) {
+	try {
+		const message = await Auth.confirmSignUp(username, code);
+		return message;
+	} catch (error) {
+		return error;
+	}
+}
+
+export async function signIn(username, password) {
 	try {
 		const user = await Auth.signIn(username, password);
+		return user;
 	} catch (error) {
-		console.log("error signing in", error);
+		return error;
 	}
 }

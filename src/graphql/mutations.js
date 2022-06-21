@@ -9,13 +9,15 @@ export const createUser = /* GraphQL */ `
     createUser(input: $input, condition: $condition) {
       id
       username
-      name
+      email
+      phone
       Cart {
         id
         User {
           id
           username
-          name
+          email
+          phone
           createdAt
           updatedAt
           userCartId
@@ -41,13 +43,15 @@ export const updateUser = /* GraphQL */ `
     updateUser(input: $input, condition: $condition) {
       id
       username
-      name
+      email
+      phone
       Cart {
         id
         User {
           id
           username
-          name
+          email
+          phone
           createdAt
           updatedAt
           userCartId
@@ -73,13 +77,15 @@ export const deleteUser = /* GraphQL */ `
     deleteUser(input: $input, condition: $condition) {
       id
       username
-      name
+      email
+      phone
       Cart {
         id
         User {
           id
           username
-          name
+          email
+          phone
           createdAt
           updatedAt
           userCartId
@@ -107,7 +113,8 @@ export const createCart = /* GraphQL */ `
       User {
         id
         username
-        name
+        email
+        phone
         Cart {
           id
           createdAt
@@ -147,7 +154,8 @@ export const updateCart = /* GraphQL */ `
       User {
         id
         username
-        name
+        email
+        phone
         Cart {
           id
           createdAt
@@ -187,7 +195,8 @@ export const deleteCart = /* GraphQL */ `
       User {
         id
         username
-        name
+        email
+        phone
         Cart {
           id
           createdAt

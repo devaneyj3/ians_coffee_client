@@ -6,13 +6,15 @@ export const onCreateUser = /* GraphQL */ `
     onCreateUser {
       id
       username
-      name
+      email
+      phone
       Cart {
         id
         User {
           id
           username
-          name
+          email
+          phone
           createdAt
           updatedAt
           userCartId
@@ -35,13 +37,15 @@ export const onUpdateUser = /* GraphQL */ `
     onUpdateUser {
       id
       username
-      name
+      email
+      phone
       Cart {
         id
         User {
           id
           username
-          name
+          email
+          phone
           createdAt
           updatedAt
           userCartId
@@ -64,13 +68,15 @@ export const onDeleteUser = /* GraphQL */ `
     onDeleteUser {
       id
       username
-      name
+      email
+      phone
       Cart {
         id
         User {
           id
           username
-          name
+          email
+          phone
           createdAt
           updatedAt
           userCartId
@@ -95,7 +101,8 @@ export const onCreateCart = /* GraphQL */ `
       User {
         id
         username
-        name
+        email
+        phone
         Cart {
           id
           createdAt
@@ -132,7 +139,8 @@ export const onUpdateCart = /* GraphQL */ `
       User {
         id
         username
-        name
+        email
+        phone
         Cart {
           id
           createdAt
@@ -169,7 +177,8 @@ export const onDeleteCart = /* GraphQL */ `
       User {
         id
         username
-        name
+        email
+        phone
         Cart {
           id
           createdAt

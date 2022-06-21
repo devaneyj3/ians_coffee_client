@@ -6,13 +6,15 @@ export const getUser = /* GraphQL */ `
     getUser(id: $id) {
       id
       username
-      name
+      email
+      phone
       Cart {
         id
         User {
           id
           username
-          name
+          email
+          phone
           createdAt
           updatedAt
           userCartId
@@ -40,7 +42,8 @@ export const listUsers = /* GraphQL */ `
       items {
         id
         username
-        name
+        email
+        phone
         Cart {
           id
           createdAt
@@ -62,7 +65,8 @@ export const getCart = /* GraphQL */ `
       User {
         id
         username
-        name
+        email
+        phone
         Cart {
           id
           createdAt
@@ -104,7 +108,8 @@ export const listCarts = /* GraphQL */ `
         User {
           id
           username
-          name
+          email
+          phone
           createdAt
           updatedAt
           userCartId

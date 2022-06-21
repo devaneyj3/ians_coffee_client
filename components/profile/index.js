@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { useUser } from "@auth0/nextjs-auth0";
+import { Auth } from "aws-amplify";
 import { addIfNoUserExists } from "../../helper/apiCalls";
 import { useDispatch } from "react-redux";
 import { storeCustomer } from "../../helper/redux/slice/userSlice";
 
 const Profile = () => {
-	const { user, error, isLoading } = useUser();
-
-	console.log("Auth0 user ", user);
 	const dispatch = useDispatch();
+
+	const { username } = Auth.user;
+	const { email, phone_number } = Auth.user.attributes;
 
 	const checkIfUserExists = async (user) => {
 		try {
@@ -20,19 +20,16 @@ const Profile = () => {
 			console.log(error);
 		}
 	};
-	useEffect(() => {
-		checkIfUserExists(user);
-	}, [user]);
-
-	if (isLoading) return <div>Loading...</div>;
-	if (error) return <div>{error.message}</div>;
+	// useEffect(() => {
+	// 	checkIfUserExists(user);
+	// }, [user]);
 
 	return (
-		user && (
+		username && (
 			<div>
-				<img src={user.picture} alt={user.name} />
-				<h2>{user.name}</h2>
-				<p>{user.email}</p>
+				<h2>{username}</h2>
+				<p>{email}</p>
+				<p>{phone_number}</p>
 			</div>
 		)
 	);

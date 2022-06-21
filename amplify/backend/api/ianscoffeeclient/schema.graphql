@@ -6,7 +6,8 @@ input AMPLIFY {
 type User @model {
 	id: ID!
 	username: String!
-	name: String!
+	email: String!
+	phone: String!
 	Cart: Cart @hasOne
 }
 

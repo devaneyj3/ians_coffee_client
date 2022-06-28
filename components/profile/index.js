@@ -9,7 +9,7 @@ const Profile = () => {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [phone_number, setPhoneNumber] = useState("");
-	console.log(username, email, phone_number);
+
 	const getCurrentUser = async () => {
 		try {
 			const userData = await Auth.currentAuthenticatedUser();

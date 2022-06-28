@@ -38,13 +38,15 @@ export async function addCart(drinkData, userID) {
 	}
 }
 export async function addUser(userData) {
+	console.log("adding,", userData);
 	try {
-		const { name, nickname } = userData;
+		const { username, email, phone } = userData;
 		const user = await API.graphql(
 			graphqlOperation(createUser, {
 				input: {
-					name: name,
-					username: nickname,
+					username,
+					email,
+					phone,
 				},
 			})
 		);
@@ -60,15 +62,17 @@ export async function addIfNoUserExists(user) {
 		const userData = await API.graphql(
 			graphqlOperation(listUsers, {
 				filter: {
-					username: { eq: user.nickname },
+					username: { eq: user.username },
 				},
 			})
 		);
 		const person = userData.data.listUsers.items[0];
+		console.log("user already created ", person);
 		if (person) {
 			return { person, value: -1 };
 		} else {
 			const newData = await addUser(user);
+
 			return newData;
 		}
 	} catch (err) {

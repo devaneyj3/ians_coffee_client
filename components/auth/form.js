@@ -30,9 +30,9 @@ export default function Form({
 
 	const formSubmit = async (e) => {
 		e.preventDefault();
+		const person = { username, email, password, phone_number };
 		if (role === "client" && !code) {
-			const person = { username, email, password, phone_number };
-			const user = signUp(person);
+			const user = await signUp(person);
 			setClient(user);
 		}
 		if (code !== "" && client) {

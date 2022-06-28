@@ -6,7 +6,6 @@ import PageLayout from "../../components/layout/page_layout";
 export default function SignIn() {
 	const [formName, setFormName] = useState("signup");
 	const [client, setClient] = useState("");
-
 	let heading = "";
 	if (formName === "signin") {
 		heading = "Please sign in with your credentials.";

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Auth } from "aws-amplify";
 import { addIfNoUserExists } from "../../helper/apiCalls";
 import { useDispatch } from "react-redux";
@@ -6,32 +6,40 @@ import { storeCustomer } from "../../helper/redux/slice/userSlice";
 
 const Profile = () => {
 	const dispatch = useDispatch();
-
-	const { username } = Auth.user;
-	const { email, phone_number } = Auth.user.attributes;
-
-	const checkIfUserExists = async (user) => {
+	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
+	const [phone_number, setPhoneNumber] = useState("");
+	console.log(username, email, phone_number);
+	const getCurrentUser = async () => {
 		try {
-			const userData = await addIfNoUserExists(user);
+			const userData = await Auth.currentAuthenticatedUser();
 			console.log(userData);
+			const { username } = userData;
+			const { email, phone_number } = userData.attributes;
+			setUsername(username);
+			setEmail(email);
+			setPhoneNumber(phone_number);
+			const user = { username, email, phone: phone_number };
 			//store in toolkit
-			dispatch(storeCustomer(userData));
+			const person = await addIfNoUserExists(user);
+			console.log("persson is", person);
+			//store in toolkit
+			dispatch(storeCustomer(person));
 		} catch (error) {
 			console.log(error);
 		}
 	};
-	// useEffect(() => {
-	// 	checkIfUserExists(user);
-	// }, [user]);
+	useEffect(() => {
+		getCurrentUser();
+	}, []);
 
 	return (
-		username && (
-			<div>
-				<h2>{username}</h2>
-				<p>{email}</p>
-				<p>{phone_number}</p>
-			</div>
-		)
+		<div>
+			<h1>Profile</h1>
+			<p>{username}</p>
+			<p>{email}</p>
+			<p>{phone_number}</p>
+		</div>
 	);
 };
 

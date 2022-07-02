@@ -43,7 +43,7 @@ export default function Featured() {
 								<p>${price}</p>
 								{!admin.isLoggedIn && user.currentCustomer === null ? (
 									<Button>
-										<Link href="/api/auth/login">Add to Cart</Link>
+										<Link href="/sign_in">Add to Cart</Link>
 									</Button>
 								) : (
 									<Button onClick={() => addToCart(drink)}>Add to Cart</Button>

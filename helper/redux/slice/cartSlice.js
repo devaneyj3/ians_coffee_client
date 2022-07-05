@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	cart: [],
+	cartTotal: 0,
 };
 
 export const cartSlice = createSlice({
@@ -8,10 +9,20 @@ export const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addDrinkToCart: (state, action) => {
-			console.log(action.payload);
+			let total = action.payload.drink.price * action.payload.quantity;
+
+			total = Number(total.toFixed(2));
+
+			(action.payload.quantity = ~~action.payload.quantity),
+				(action.payload.total = total);
+			console.log("redux adding to cart, ", action.payload);
 			state.cart = [...state.cart, action.payload];
+
+			state.cartTotal = state.cartTotal + total;
 		},
-		deleteDrinks: (state, action) => {
+		updateTotals: (state, action) => {
+			//update the total of the cart
+			state.cartTotal = action.payload;
 			const id = action.payload;
 			const filteredDrinks = state.drinks.filter((drink) => drink.id !== id);
 			state.drinks = filteredDrinks;

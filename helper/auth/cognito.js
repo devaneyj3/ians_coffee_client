@@ -16,7 +16,7 @@ export async function signUp(person) {
 		});
 		return user;
 	} catch (error) {
-		console.log("error signing up:", error);
+		console.log("error signing up, cognito.js line 19:", error);
 	}
 }
 
@@ -34,6 +34,6 @@ export async function signIn(username, password) {
 		const user = await Auth.signIn(username, password);
 		return user;
 	} catch (error) {
-		return error;
+		return error.message;
 	}
 }

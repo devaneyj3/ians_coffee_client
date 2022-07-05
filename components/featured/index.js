@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./featured.module.scss";
 
 import {
@@ -13,8 +13,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { addDrinkToCart } from "../../helper/redux/slice/cartSlice";
+import Quantity from "../Quantity";
 
 export default function Featured() {
+	const [quantity, setQuantity] = useState(1);
 	const drinks = useSelector((state) => state.drinkReducer);
 
 	const admin = useSelector((state) => state.adminReducer);
@@ -24,7 +26,7 @@ export default function Featured() {
 	const dispatch = useDispatch();
 
 	const addToCart = async (drink) => {
-		dispatch(addDrinkToCart(drink));
+		dispatch(addDrinkToCart({ drink, quantity }));
 	};
 	return (
 		<>
@@ -40,6 +42,7 @@ export default function Featured() {
 								<section className={classes.icon}></section>
 								<CardTitle tag="h5">{name}</CardTitle>
 								<CardText>{description}</CardText>
+								<Quantity quantity={quantity} setQuantity={setQuantity} />
 								<p>${price}</p>
 								{!admin.isLoggedIn && user.currentCustomer === null ? (
 									<Button>

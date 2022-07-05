@@ -10,8 +10,6 @@ const Profile = () => {
 
 	const { currentCustomer } = useSelector((state) => state.userReducer);
 
-	const { username, email, phone } = currentCustomer;
-
 	console.log(currentCustomer);
 
 	const getCurrentUser = async () => {
@@ -41,9 +39,13 @@ const Profile = () => {
 	return (
 		<div className={classes.profile_container}>
 			<h1>Profile</h1>
-			<p>{username}</p>
-			<p>{email}</p>
-			<p>{phone}</p>
+			{currentCustomer && (
+				<>
+					<p>{currentCustomer.username}</p>
+					<p>{currentCustomer.email}</p>
+					<p>{currentCustomer.phone}</p>
+				</>
+			)}
 		</div>
 	);
 };

@@ -17,6 +17,7 @@ export default function Form({
 	formName,
 	client,
 	setClient,
+	setMessage,
 }) {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -31,7 +32,8 @@ export default function Form({
 	const formSubmit = async (e) => {
 		e.preventDefault();
 		const person = { username, email, password, phone_number };
-		if (role === "client" && !code) {
+		if (role === "client" && formName == "signup") {
+			console.log("client sign up");
 			const user = await signUp(person);
 			setClient(user);
 		}
@@ -44,7 +46,11 @@ export default function Form({
 		}
 
 		if (formName == "signin") {
-			const message = await signIn(username, password);
+			await signIn(username, password);
+
+			// if (message === "SUCCESS") {
+			// 	router.push("/profile");
+			// }
 			router.push("/profile");
 		}
 		//add to appsync

@@ -1,27 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "reactstrap";
+import CartItem from "../../components/CartItem/CartItem";
 import PageLayout from "../../components/layout/page_layout";
 
+import classes from "./cart.module.scss";
+
 export default function Cart() {
-	const { cart } = useSelector((state) => state.cartReducer);
+	const [productTotal, setProductTotal] = useState(0);
+	const cart = useSelector((state) => state.cartReducer);
 
 	console.log("products in cart ", cart);
 
 	return (
-		<PageLayout>
-			<p>There are {cart.length} drinks in you cart.</p>
-			{cart.map((product) => {
+		<>
+			<h1>My Cart</h1>
+			<hr />
+			{cart.cart.map((product) => {
 				return (
-					<div>
-						<p>{product.name}</p>
-						<p>{product.price}</p>
-					</div>
+					<CartItem
+						key={product.id}
+						product={product}
+						setProductTotal={setProductTotal}
+					/>
 				);
 			})}
-			<p>Total: {cart.reduce((acc, curr) => acc + curr.price, 0)}</p>
+			<hr />
+			<section className={classes.summary}>
+				<p>{cart.length} Items</p>
+
+				<p>${cart.cartTotal}</p>
+			</section>
 			<Button color="primary">Order</Button>
-		</PageLayout>
+		</>
 	);
 }

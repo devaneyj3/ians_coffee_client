@@ -9,16 +9,28 @@ export const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addDrinkToCart: (state, action) => {
-			let total = action.payload.drink.price * action.payload.quantity;
-
+			const { drink, quantity, id } = action.payload;
+			let total = drink.price * quantity;
 			total = Number(total.toFixed(2));
 
-			(action.payload.quantity = ~~action.payload.quantity),
-				(action.payload.total = total);
-			console.log("redux adding to cart, ", action.payload);
-			state.cart = [...state.cart, action.payload];
+			quantity = ~~quantity;
 
-			state.cartTotal = state.cartTotal + total;
+			// if the drink is already in the cart, increase the quantity
+			const drinkInCart = state.cart.find((item) => item.id === id);
+			if (drinkInCart) {
+				drinkInCart.quantity += quantity;
+				drinkInCart.productTotal = drinkInCart.price * drinkInCart.quantity;
+			}
+			// if the drink is not in the cart, add it
+			else {
+				state.cart.push({
+					...drink,
+					quantity,
+					productTotal: total,
+					id,
+				});
+			}
+			state.cartTotal += drink.price * quantity;
 		},
 		updateTotals: (state, action) => {
 			//update the total of the cart
@@ -27,11 +39,10 @@ export const cartSlice = createSlice({
 			const filteredDrinks = state.drinks.filter((drink) => drink.id !== id);
 			state.drinks = filteredDrinks;
 		},
-		updateDrinks: (state, action) => {
-			const { id } = action.payload;
-			const foundDrink = state.drinks.findIndex((drink) => drink.id === id);
-
-			state.drinks[foundDrink] = action.payload;
+		clearCart: (state, action) => {
+			//clear the cart
+			state.cart = [];
+			state.cartTotal = 0;
 		},
 		initialLoad: (state, action) => {
 			state.drinks = action.payload;
@@ -40,7 +51,7 @@ export const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addDrinkToCart, deleteDrinks, initialLoad, updateDrinks } =
+export const { addDrinkToCart, clearCart, initialLoad, updateDrinks } =
 	cartSlice.actions;
 
 export default cartSlice.reducer;

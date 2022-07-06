@@ -8,10 +8,14 @@ import classes from "./nav.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import AdminRoutes from "./AdminRoutes";
 import { customerNotInSession } from "../../../helper/redux/slice/userSlice";
+import { clearCart } from "../../../helper/redux/slice/cartSlice";
+import { useRouter } from "next/router";
 
 export default function Nav() {
 	const admin = useSelector((state) => state.adminReducer);
 	const user = useSelector((state) => state.userReducer);
+
+	const router = useRouter();
 	const { currentCustomer } = user;
 	console.log(user);
 	const dispatch = useDispatch();
@@ -19,8 +23,15 @@ export default function Nav() {
 	//sign customer out
 	const signOut = async () => {
 		try {
+			console.log("clearning cart");
+			//clear drink cart
+			dispatch(clearCart());
+			//sign customer out
 			await Auth.signOut();
+			//set customer to null
 			dispatch(customerNotInSession());
+			//navigate to home
+			router.push("/");
 		} catch (error) {
 			console.log(error);
 		}

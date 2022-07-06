@@ -13,6 +13,8 @@ export default function Cart() {
 
 	console.log("products in cart ", cart);
 
+	const cartTotal = cart.cartTotal.toFixed(2);
+
 	return (
 		<>
 			<h1>My Cart</h1>
@@ -28,9 +30,9 @@ export default function Cart() {
 			})}
 			<hr />
 			<section className={classes.summary}>
-				<p>{cart.length} Items</p>
+				<p>{cart.cart.length} Items</p>
 
-				<p>${cart.cartTotal}</p>
+				<p>${cartTotal}</p>
 			</section>
 			<Button color="primary">Order</Button>
 		</>

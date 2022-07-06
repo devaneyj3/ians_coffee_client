@@ -6,21 +6,20 @@ import classes from "./CartItem.module.scss";
 export default function CartItem({ product, setProductTotal }) {
 	const [quantityOp, setQuantity] = useState(product.quantity);
 
-	const { drink, quantity, total } = product;
-	console.log(drink, quantity, total);
+	const { name, price, quantity } = product;
 
 	let quantityNum = ~~quantity;
 	quantityNum = quantityNum.toFixed(2);
 
-	let newProductTotal = drink.price * quantityOp;
+	let newProductTotal = price * quantityOp;
 	newProductTotal = newProductTotal.toFixed(2);
 
 	setProductTotal(newProductTotal);
 	return (
 		<div>
 			<div className={classes.product}>
-				<p>{drink.name}</p>
-				<p>{drink.price}</p>
+				<p>{name}</p>
+				<p>{price}</p>
 				<Quantity quantity={quantityOp} setQuantity={setQuantity} />
 				<p>${newProductTotal}</p>
 			</div>

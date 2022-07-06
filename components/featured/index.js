@@ -25,8 +25,9 @@ export default function Featured() {
 
 	const dispatch = useDispatch();
 
-	const addToCart = async (drink) => {
-		dispatch(addDrinkToCart({ drink, quantity }));
+	const addToCart = async (drink, id) => {
+		dispatch(addDrinkToCart({ drink, quantity, id }));
+		console.log(`Added ${quantity} ${drink.name} to cart`);
 	};
 	return (
 		<>
@@ -42,14 +43,16 @@ export default function Featured() {
 								<section className={classes.icon}></section>
 								<CardTitle tag="h5">{name}</CardTitle>
 								<CardText>{description}</CardText>
-								<Quantity quantity={quantity} setQuantity={setQuantity} />
+								<Quantity setQuantity={setQuantity} />
 								<p>${price}</p>
 								{!admin.isLoggedIn && user.currentCustomer === null ? (
 									<Button>
 										<Link href="/sign_in">Add to Cart</Link>
 									</Button>
 								) : (
-									<Button onClick={() => addToCart(drink)}>Add to Cart</Button>
+									<Button onClick={() => addToCart(drink, id)}>
+										Add to Cart
+									</Button>
 								)}
 							</CardBody>
 						</Card>
